@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "1517d365-5d86-4aed-8fee-5bb227a4d7b5",
+		"name": "CashDesk API Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23905742"
+	},
+	"item": [
+		{
+			"name": "Get Cash Balance",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "FIB-X-AUTH",
+						"value": "f9Uie8nNf112hx8s",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"operationType\": \"WITHDRAWAL\",\n  \"cashierName\": \"LINDA\",\n  \"currency\": \"EUR\",\n  \"amount\": 2000,\n  \"denominations\": [\n    {\n      \"count\": 100,\n      \"value\": 10\n    },\n    {\n      \"count\": 20,\n      \"value\": 50\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/cash-balance?cashierName=PETER",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"cash-balance"
+					],
+					"query": [
+						{
+							"key": "cashierName",
+							"value": "PETER"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deposit",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "FIB-X-AUTH",
+						"value": "f9Uie8nNf112hx8s",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"operationType\": \"DEPOSIT\",\n  \"cashierName\": \"PETER\",\n  \"currency\": \"BGN\",\n  \"amount\": 1000,\n  \"denominations\": [\n    {\n      \"count\": 0,\n      \"value\": 10\n    },\n    {\n      \"count\": 20,\n      \"value\": 50\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/cash-operation",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"cash-operation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Withdraw",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "FIB-X-AUTH",
+						"value": "f9Uie8nNf112hx8s",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"operationType\": \"WITHDRAWAL\",\n  \"cashierName\": \"PETER\",\n  \"currency\": \"BGN\",\n  \"amount\": 1000,\n  \"denominations\": [\n    {\n      \"count\": 0,\n      \"value\": 10\n    },\n    {\n      \"count\": 20,\n      \"value\": 50\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/cash-operation",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"cash-operation"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
